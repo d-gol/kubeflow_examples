@@ -25,8 +25,6 @@ The trained models are not the best performers, they are here for testing the Ku
 - Open Terminal
 - Clone this repository: `git clone https://gitlab.cern.ch/ai-ml/examples`
 
-Open 
-
 ## Example 1 - mnist-kfp
 
 ### What is it about?
