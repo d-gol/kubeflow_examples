@@ -19,18 +19,21 @@ In the examples here, MNIST database will be used. <br/>
 Various neural network models will be trained using this database. <br/>
 The trained models are not the best performers, they are here for testing the Kubeflow environment. <br/>
 
-## Example 1 - mnist_kfp
+## Example 1 - mnist-kfp
 
 ### What is it about?
 
 Create an ML pipeline using Python code, from Jupyter notebook. <br/>
 Demonstrate running two models in parallel with a pipeline. <br/>
+Demonstrate access to EOS from a pipeline.
 
 Workflow: read data, preprocess data, train two models in parallel, evaluate models results.
 
+Store intermediate data on personal EOS.
+
 ### How to run?
 
-- Open mnist_kfp/mnist_kfp.ipynb in your Notebook server
+- Open **mnist-kfp/mnist-kfp-eos.ipynb** in your Notebook server
 - Run all the cells
 - Download created pipeline .yaml file
 - Open Pipelines
@@ -38,3 +41,25 @@ Workflow: read data, preprocess data, train two models in parallel, evaluate mod
 - Select downloaded file and fill other fields
 - Click Create Run
 - The experiment should finish as Successful
+
+Current issue with EOS: Fix by reading local credentials and pass it to every cell.
+
+## Example 2 - mnist-kale
+
+### What is it about?
+
+Create and run a pipeline by annotating cells and using KALE Jupyter Lab extension. <br/>
+
+### How to run?
+
+- Connect to one of the created Notebook Servers on https://ml.cern.ch/_/jupyter/
+    - Make sure the image is built on Kale
+- Open **mnist-kale/mnist-kale-katib.ipynb** in your Notebook server
+- On the left side, select Kubeflow Pipelines Deployment Panel
+- Toggle Enable
+- Select Experiment (existing or new)
+- Write Pipeline name and Pipeline description
+- Untoggle *HP Tuning with Katib*
+- Click Compile and Run at the bottom of the page
+- After successfull compilation, click View
+- Inspect and debig your pipeline via Pipeline log
