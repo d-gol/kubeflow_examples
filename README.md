@@ -19,6 +19,14 @@ In the examples here, MNIST database will be used. <br/>
 Various neural network models will be trained using this database. <br/>
 The trained models are not the best performers, they are here for testing the Kubeflow environment. <br/>
 
+## How to start?
+
+- Connect to one of the created Notebook Servers on https://ml.cern.ch/_/jupyter/
+- Open Terminal
+- Clone this repository: `git clone https://gitlab.cern.ch/ai-ml/examples`
+
+Open 
+
 ## Example 1 - mnist-kfp
 
 ### What is it about?
@@ -52,8 +60,6 @@ Create and run a pipeline by annotating cells and using KALE Jupyter Lab extensi
 
 ### How to run?
 
-- Connect to one of the created Notebook Servers on https://ml.cern.ch/_/jupyter/
-    - Make sure the image is built on Kale
 - Open **mnist-kale/mnist-kale-katib.ipynb** in your Notebook server
 - On the left side, select Kubeflow Pipelines Deployment Panel
 - Toggle Enable
@@ -62,4 +68,16 @@ Create and run a pipeline by annotating cells and using KALE Jupyter Lab extensi
 - Untoggle *HP Tuning with Katib*
 - Click Compile and Run at the bottom of the page
 - After successfull compilation, click View
-- Inspect and debig your pipeline via Pipeline log
+- Inspect and debug your pipeline via Pipeline log
+
+## Example 3 - Katib
+
+- Since integration to Katib from Notebooks using KALE is currently unavailable, use default Katib examples.
+- Navigate to https://ml.cern.ch/_/katib/?ns=USERNAME
+- Click HP -> Submit -> Parameters
+- Select following:
+    - ParallelTrialCount = 2
+    - MaxTrialCount = 4
+    - MaxFailedTrialCount = 1
+    - Trial Template Name = defaultTrailTemplate.yaml
+- Click Deploy
