@@ -25,7 +25,7 @@ The trained models are not the best performers, they are here for testing the Ku
 - Open Terminal
 - Clone this repository: `git clone https://gitlab.cern.ch/ai-ml/examples`
 
-## Example 1 - mnist-kfp
+## Example - mnist-kfp
 
 ### What is it about?
 
@@ -50,7 +50,7 @@ Store intermediate data on personal EOS.
 
 Current issue with EOS: Fix by reading local credentials and pass it to every cell.
 
-## Example 2 - mnist-kale
+## Example - mnist-kale
 
 ### What is it about?
 
@@ -68,20 +68,7 @@ Create and run a pipeline by annotating cells and using KALE Jupyter Lab extensi
 - After successfull compilation, click View
 - Inspect and debug your pipeline via Pipeline log
 
-## Example 3 - Katib
-
-- Since integration to Katib from Notebooks using KALE is currently unavailable, use default Katib examples.
-- Navigate to https://ml.cern.ch/_/katib/?ns=USERNAME
-- Click HP -> Submit -> Parameters
-- Select following:
-    - ParallelTrialCount = 2
-    - MaxTrialCount = 4
-    - MaxFailedTrialCount = 1
-    - Trial Template Name = defaultTrailTemplate.yaml
-- Click Deploy
-
-
-## Example 4 - Kubeflow Fairing with TFJob
+## Example - Kubeflow Fairing with TFJob
 
 ### What is it about?
 
@@ -99,7 +86,7 @@ TFJob is a Kubernetes Custom Resource to run a distributed TensorFlow job on the
 - Open **fairing/fairing-mnist.ipynb**
 - Run the cells
 
-## Example 5 - Kubeflow Metadata
+## Example - Kubeflow Metadata
 
 ### What is it about?
 
@@ -111,3 +98,15 @@ This demo shows usage of Kubeflow metadata, stores artifacts in the Artifact sto
 
 - Navigate to **metadata/demo_metadata.ipynb**
 - Run the cells
+
+## Example - Katib
+
+- Since integration to Katib from Notebooks using KALE is currently unavailable, use default Katib examples.
+- Navigate to https://ml.cern.ch/_/katib/?ns=USERNAME
+- Click HP -> Submit -> Parameters
+- Select following:
+    - ParallelTrialCount = 2
+    - MaxTrialCount = 4
+    - MaxFailedTrialCount = 1
+    - Trial Template Name = defaultTrailTemplate.yaml
+- Click Deploy
