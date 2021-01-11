@@ -1,0 +1,64 @@
+apiVersion: "kubeflow.org/v1alpha3"
+kind: Experiment
+metadata:
+  namespace: dejan-golubovic
+  name: custom-test-eos
+spec:
+  parallelTrialCount: 1
+  maxTrialCount: 3
+  maxFailedTrialCount: 1
+  objective:
+    type: minimize
+    goal: 0
+    objectiveMetricName: loss
+  algorithm:
+    algorithmName: random
+  metricsCollectorSpec:
+    source:
+      fileSystemPath:
+        path: /tmp/model_outputs/eval
+        kind: Directory
+    collector:
+      kind: TensorFlowEvent
+  parameters:
+    - name: --learning_rate
+      parameterType: double
+      feasibleSpace:
+        min: "0.01"
+        max: "0.05"
+  trialTemplate:
+    goTemplate:
+      rawTemplate: |-
+        apiVersion: "kubeflow.org/v1"
+        kind: TFJob
+        metadata:
+          name: {{.Trial}}
+          namespace: {{.NameSpace}}
+        spec:
+         tfReplicaSpecs:
+          Chief:
+            replicas: 1 
+            restartPolicy: OnFailure
+            template:
+              spec:
+                volumes:
+                  - hostPath:
+                      path: /var/eos
+                      type: ""
+                    name: eos
+                containers:
+                  - name: tensorflow 
+                    image: registry.hub.docker.com/dejangolubovic/tfjob-test:custom
+                    imagePullPolicy: Always
+                    volumeMounts:
+                      - mountPath: /eos
+                        mountPropagation: HostToContainer
+                        name: eos
+                    command:
+                      - "python"
+                      - "/custom-code.py"
+                      {{- with .HyperParameters}}
+                      {{- range .}}
+                      - "{{.Name}}={{.Value}}"
+                      {{- end}}
+                      {{- end}}
