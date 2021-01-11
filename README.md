@@ -86,6 +86,21 @@ TFJob is a Kubernetes Custom Resource to run a distributed TensorFlow job on the
 - Open **fairing/fairing-mnist.ipynb**
 - Run the cells
 
+## Example - TFJob
+
+### What is it about?
+Run a distributed training job using TFJob CRD and Katib UI.  
+Using this example, training job is split across multiple GPUs.
+
+### How to run?
+- Build docker image with custom code: `docker build -f Dockerfile.custom -t @username/tfjob-job . --network=host`
+- Push docker image: `docker push @username/tfjob-job`
+- Edit custom-code.yaml
+    - Select number of workers
+    - Select your docker image `image: registry.hub.docker.com/@username/tf-job`
+- Go to https://ml.cern.ch/katib/#/katib/hp, and copy paste content of custom-code.yaml
+- Click _Deploy_
+
 ## Example - Kubeflow Metadata
 
 ### What is it about?
@@ -101,7 +116,10 @@ This demo shows usage of Kubeflow metadata, stores artifacts in the Artifact sto
 
 ## Example - Katib
 
-- Since integration to Katib from Notebooks using KALE is currently unavailable, use default Katib examples.
+### What is it about?
+Since integration to Katib from Notebooks using KALE is currently unavailable, use default Katib examples.
+
+### How to run?
 - Navigate to https://ml.cern.ch/_/katib/?ns=USERNAME
 - Click HP -> Submit -> Parameters
 - Select following:
