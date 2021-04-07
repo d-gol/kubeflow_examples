@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: fairing-pvc
+  namespace: dejan-golubovic
+spec:
+  storageClassName: geneva-cephfs-testing
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
