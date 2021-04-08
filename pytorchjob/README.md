@@ -14,5 +14,5 @@ You can select level of parallelism, number of workers and resources for each wo
 * Edit pytorch.yaml (or other provided .yaml files).  
     * Define PyTorch master and workers. 
     * Make sure to run from the image you have just built `image: registry.hub.docker.com/@username/pytorch-job` .  
-* Navigate to [Katib Dashboard](https://ml.cern.ch/katib/#/katib/hp), copy/paste content of `pytorch.yaml`.  
-* Click _Deploy_ .  
+* In Terminal, run: `kubectl apply -f pytorch.yaml`.  
+* Monitor pytorchjob with: `kubectl logs pytorch-dist-mnist-nccl-master-0`
