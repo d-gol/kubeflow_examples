@@ -18,7 +18,6 @@ metadata:
      serving.kubeflow.org/s3-usehttps: "1" # by default 1, for testing with minio you need to set to 0
 type: Opaque
 stringData:
-# Before KFServing 0.3
   awsAccessKeyID: /
   awsSecretAccessKey: /
 ---
