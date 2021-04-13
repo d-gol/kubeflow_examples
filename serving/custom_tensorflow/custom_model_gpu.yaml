@@ -10,8 +10,14 @@ spec:
       serviceAccountName: sa
       tensorflow:
         storageUri: "s3://bucket/custom_model/"
-      resources:
+        resources:
           limits:
+            cpu: "1"
+            memory: 2Gi
+            nvidia.com/gpu: 1
+          requests:
+            cpu: "1"
+            memory: 2Gi
             nvidia.com/gpu: 1
 ---
 apiVersion: v1
