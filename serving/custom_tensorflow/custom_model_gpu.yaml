@@ -1,0 +1,33 @@
+apiVersion: "serving.kubeflow.org/v1alpha2"
+kind: "InferenceService"
+metadata:
+  name: "custom-model-gpu"
+spec:
+  default:
+    predictor:
+      serviceAccountName: sa
+      tensorflow:
+        storageUri: "s3://bucket/custom_model/"
+      resources:
+          limits:
+            nvidia.com/gpu: 1
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+  annotations:
+     serving.kubeflow.org/s3-endpoint: s3.cern.ch # replace with your s3 endpoint
+     serving.kubeflow.org/s3-usehttps: "1" # by default 1, for testing with minio you need to set to 0
+type: Opaque
+stringData:
+# Before KFServing 0.3
+  awsAccessKeyID: /
+  awsSecretAccessKey: /
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa
+secrets:
+- name: mysecret
