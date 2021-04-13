@@ -4,7 +4,7 @@
 
 ### Obtain an Authentication Session Cookie
 
-## Chrome
+#### Chrome
 
 - Click `View -> Developer Tools -> Network`
 - Navigate to [ml.cern.ch](https://ml.cern.ch)
