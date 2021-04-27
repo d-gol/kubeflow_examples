@@ -7,7 +7,7 @@ Imported and adjusted from here: https://github.com/kubeflow-kale/kale/tree/mast
 
 ### How to run?
 
-- Open **open-vaccine/open-vaccineb.ipynb** in your Notebook server
+- Open **open-vaccine/open-vaccine.ipynb** in your Notebook server
 - On the left side, select Kubeflow Pipelines Deployment Panel
 - Toggle Enable
 - Select Experiment (existing or new)
