@@ -17,4 +17,9 @@ To expand, add customized code with scripts to run.
 - Create a secret for S3 bucket
   - `kubectl apply -f s3_secret.yaml`
 - Feel free to use custom image and a custom command in `argo_eos_secrets.yaml` file
-- Run a pipeline
+- Upload the pipeline. Note: {NAMESPACE} is a personal Kubeflow namespace
+  - `kfp pipeline upload -p eos_secrets_pipeline -d 'namespace: {NAMESPACE}' argo_eos_secrets.yaml`
+- Create an experiment (a wrapper for pipeline runs)
+  - `kfp experiment create argo_experiment`
+- Run the pipeline
+  - `kfp run submit -e argo_experiment -n eos_secrets_pipeline -r first_run -w`
