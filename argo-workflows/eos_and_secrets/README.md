@@ -3,7 +3,13 @@
 Creating a pipeline with EOS access and mounting an S3 secret.  
 A demonstration of mounting different storage options.  
 
-To expand, add customized code with scripts to run.
+The script shows:
+- Creation of a Kubernetes secrets.  
+- Mounting secrets to Pipelines and reading their values.  
+- Mounting EOS to Pipelines.  
+- Showing EOS personal directory files.  
+
+To expand, feel free to add customized code with scripts to run.
 
 ## How to run?
 
