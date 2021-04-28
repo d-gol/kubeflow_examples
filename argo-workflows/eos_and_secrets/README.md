@@ -8,7 +8,7 @@ To expand, add customized code with scripts to run.
 ## How to run?
 
 - Open a running NB server
-- Open a Terminal
+- Open Terminal
 - Login to kerberos with kinit:
   - `kinit CERN-USER-ID`
 - Create a kerberos secret for Kubernetes
