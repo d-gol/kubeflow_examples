@@ -26,3 +26,5 @@ To expand, add customized code with scripts to run.
   - `kfp experiment create argo_experiment`
 - Run the pipeline
   - `kfp run submit -e argo_experiment -n eos_secrets_pipeline -r first_run -w`
+- Monitor pipeline completion from Terminal
+  - Or use UI to explore pipeline logs - https://ml.cern.ch/_/pipeline/#/experiments
