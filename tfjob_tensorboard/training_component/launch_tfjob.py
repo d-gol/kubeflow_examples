@@ -76,7 +76,9 @@ tfjob = {
                                         "--data-dir", \
                                         args.data_dir, \
                                         "--config-map",
-                                        config_map
+                                        config_map, \
+                                        "--namespace",
+                                        namespace
                                     ]
                                 }
                             ],
@@ -145,7 +147,7 @@ cmap = {
     }
 
 print(cmap)
-k8s_core_client.create_namespaced_config_map(namespace=namespace, body=cmap)
+#k8s_core_client.create_namespaced_config_map(namespace=namespace, body=cmap)
 read_cm = k8s_core_client.read_namespaced_config_map(name=config_map, namespace=namespace)
 
 print(read_cm)
