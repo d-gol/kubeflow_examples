@@ -32,10 +32,6 @@ parser.add_argument(
     '--tb-dir', required=True)
 parser.add_argument(
     '--data-dir', default='gs://aju-dev-demos-codelabs/bikes_weather/')
-parser.add_argument(
-      '--train-output-path', required=True)
-parser.add_argument(
-      '--metrics-output-path', required=True)
 
 args = parser.parse_args()
 tfjob_name = 'tftest'
