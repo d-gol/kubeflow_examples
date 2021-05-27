@@ -58,7 +58,7 @@ tfjob = {
                         "spec": {
                             "containers": [
                                 {
-                                    "image": "gitlab-registry.cern.ch/ai-ml/kubeflow_images/training:7",
+                                    "image": "gitlab-registry.cern.ch/ai-ml/kubeflow_images/training_tfjob:1",
                                     "name": "tensorflow",
                                     "command": ["python", "/ml/bikes_weather_limited.py", \
                                         "--epochs", \
