@@ -5,4 +5,4 @@ RUN pip3 install kubernetes
 
 COPY launch_tfjob.py /tmp/launch_tfjob.py
 
-ENTRYPOINT ["python", "/tmp/launch_tfjob.py"]
+ENTRYPOINT ["python3", "/tmp/launch_tfjob.py"]
