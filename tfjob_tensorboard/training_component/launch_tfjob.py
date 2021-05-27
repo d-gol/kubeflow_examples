@@ -9,7 +9,6 @@ import argparse
 import kubernetes
 from kubernetes import client
 import kfp
-from pprint import pprint
 import time
 import uuid
 import pathlib2
