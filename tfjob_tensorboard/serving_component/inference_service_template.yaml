@@ -1,0 +1,10 @@
+apiVersion: "serving.kubeflow.org/v1alpha2"
+kind: "InferenceService"
+metadata:
+  name: MODEL_NAME_TO_REPLACE
+  namespace: NAMESPACE_TO_REPLACE
+spec:
+  default:
+    predictor:
+      tensorflow:
+        storageUri: STORAGE_TO_REPLACE
