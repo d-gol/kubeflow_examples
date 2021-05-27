@@ -14,7 +14,7 @@ WORKDIR /pipelines/sdk/python
 RUN pip3 install -U . --upgrade
 
 # Install kubernetes python client
-RUN pip3 install kubernetes
+RUN pip3 install kubernetes && pip3 install pathlib2
 
 COPY launch_tfjob.py /tmp/launch_tfjob.py
 
