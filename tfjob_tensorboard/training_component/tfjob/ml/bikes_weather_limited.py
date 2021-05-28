@@ -19,6 +19,9 @@ import json
 import time
 import os
 
+print('os.getuid()')
+print(os.getuid())
+
 print('PATH:')
 print(os.environ['PATH'])
 
