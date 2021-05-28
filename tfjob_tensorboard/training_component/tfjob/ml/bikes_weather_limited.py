@@ -20,6 +20,8 @@ import time
 import os
 import sys
 import tensorflow as tf
+import kubernetes
+from kubernetes import client
 
 import bwmodel.model as bwmodel
 
@@ -151,6 +153,12 @@ def main():
   export_dir = '{}/export/bikesw/{}'.format(OUTPUT_DIR, ts)
   logging.info('Exporting to %s', export_dir)
 
+  kubernetes.config.load_incluster_config()
+  print('Incluster config loaded')
+
+  k8s_core_client = client.CoreV1Api()
+  print('Core client obtained'
+
   try:
     logging.info("exporting model....")
     tf.saved_model.save(model, '/tmp/exported_model')
@@ -198,7 +206,6 @@ def main():
     }
 
     k8s_core_client.create_namespaced_config_map(namespace=args.namespace, body=cmap)
-
 
 
 if __name__ == "__main__":
