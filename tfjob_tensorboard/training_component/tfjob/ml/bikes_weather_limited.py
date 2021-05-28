@@ -157,7 +157,7 @@ def main():
   print('Incluster config loaded')
 
   k8s_core_client = client.CoreV1Api()
-  print('Core client obtained'
+  print('Core client obtained')
 
   try:
     logging.info("exporting model....")
