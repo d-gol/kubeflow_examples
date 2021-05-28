@@ -23,6 +23,12 @@ import sys
 print('sys.path')
 print(sys.path)
 
+sys.path.append('usr/lib64/python36.zip')
+sys.path.append('/usr/lib64/python3.6')
+sys.path.append('/usr/lib64/python3.6/lib-dynload')
+sys.path.append('usr/local/lib64/python3.6/site-packages')
+sys.path.append('/usr/local/lib/python3.6/site-package')
+sys.path.append('/usr/lib64/python3.6/site-packages')
 sys.path.append('/usr/local/lib64/python3.6/site-packages')
 
 print('sys.path')
