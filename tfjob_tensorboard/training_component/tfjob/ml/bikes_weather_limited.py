@@ -18,12 +18,15 @@ import logging
 import json
 import time
 import os
+import sys
 
-print('os.getuid()')
-print(os.getuid())
+print('sys.path')
+print(sys.path)
 
-print('PATH:')
-print(os.environ['PATH'])
+sys.path.append('/usr/local/lib64/python3.6/site-packages')
+
+print('sys.path')
+print(sys.path)
 
 print('importing tensorflow')
 import tensorflow as tf
