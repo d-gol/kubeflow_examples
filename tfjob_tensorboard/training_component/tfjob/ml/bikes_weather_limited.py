@@ -19,25 +19,7 @@ import json
 import time
 import os
 import sys
-
-print('sys.path')
-print(sys.path)
-
-sys.path.append('usr/lib64/python36.zip')
-sys.path.append('/usr/lib64/python3.6')
-sys.path.append('/usr/lib64/python3.6/lib-dynload')
-sys.path.append('usr/local/lib64/python3.6/site-packages')
-sys.path.append('/usr/local/lib/python3.6/site-package')
-sys.path.append('/usr/lib64/python3.6/site-packages')
-sys.path.append('/usr/local/lib64/python3.6/site-packages')
-
-print('sys.path')
-print(sys.path)
-
-print('importing tensorflow')
 import tensorflow as tf
-print('tensorflow imported as tf')
-import pathlib2
 
 import bwmodel.model as bwmodel
 
@@ -169,10 +151,6 @@ def main():
   export_dir = '{}/export/bikesw/{}'.format(OUTPUT_DIR, ts)
   logging.info('Exporting to %s', export_dir)
 
-  try:
-    pathlib2.Path(args.train_output_path).parent.mkdir(parents=True)
-  except FileExistsError as e2:
-    logging.info(e2)
   try:
     logging.info("exporting model....")
     tf.saved_model.save(model, '/tmp/exported_model')
