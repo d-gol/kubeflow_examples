@@ -39,6 +39,8 @@ parser.add_argument(
       '--train-output-path', required=True)
 parser.add_argument(
       '--metrics-output-path', required=True)
+parser.add_argument(
+      '--tfjob-image', required=True)
 
 args = parser.parse_args()
 tfjob_name = 'tftest'
@@ -61,7 +63,7 @@ tfjob = {
                         "spec": {
                             "containers": [
                                 {
-                                    "image": "gitlab-registry.cern.ch/ai-ml/kubeflow_images/training_tfjob:2",
+                                    "image": args.tfjob_image,
                                     "name": "tensorflow",
                                     "command": ["python", "/ml/bikes_weather_limited.py", \
                                         "--epochs", \
