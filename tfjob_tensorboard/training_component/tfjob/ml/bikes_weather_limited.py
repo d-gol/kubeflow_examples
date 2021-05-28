@@ -19,6 +19,9 @@ import json
 import time
 import os
 
+print('PATH:')
+print(os.environ['PATH'])
+
 print('importing tensorflow')
 import tensorflow as tf
 print('tensorflow imported as tf')
