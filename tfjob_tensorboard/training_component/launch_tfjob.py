@@ -13,6 +13,10 @@ import time
 import uuid
 import pathlib2
 
+print('Launching TFJob')
+
+print('Parsing args')
+
 parser = argparse.ArgumentParser(description='ML Trainer')
 parser.add_argument(
     '--epochs', type=int, default=1)
