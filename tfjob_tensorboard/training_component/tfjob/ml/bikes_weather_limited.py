@@ -152,7 +152,7 @@ def main():
   tb_callback = tf.keras.callbacks.TensorBoard(log_dir='{}/logs'.format(OUTPUT_DIR),
                                                update_freq=20000)
 
-  logging.info("training model....")
+  logging.info("training the model....")
   history = model.fit(train_dataset,
                       validation_data=eval_dataset,
                       validation_steps=eval_batch_size,
@@ -162,7 +162,7 @@ def main():
                      )
   logging.info(history.history.keys())
   # write metrics info dict
-  metrics_json = json.dumps(history.history)
+  metrics_json = json.dumps(str(history.history))
   print('metrics json: {}'.format(metrics_json))
 
   ts = str(int(time.time()))
