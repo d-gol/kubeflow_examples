@@ -44,7 +44,7 @@ outputs:
     type: UI metadata
 implementation:
   container:
-    image: gitlab-registry.cern.ch/ai-ml/kubeflow_images/training_comp:5
+    image: gitlab-registry.cern.ch/ai-ml/kubeflow_images/training_comp:6
     args: [
       --data-dir, {inputValue: data_dir},
       --epochs, {inputValue: epochs},
