@@ -1,4 +1,3 @@
-
 # Copyright 2020 Google Inc. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +19,9 @@ import json
 import time
 import os
 
+print('importing tensorflow')
 import tensorflow as tf
+print('tensorflow imported as tf')
 import pathlib2
 
 import bwmodel.model as bwmodel
