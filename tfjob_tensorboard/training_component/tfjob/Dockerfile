@@ -4,6 +4,7 @@ COPY requirements.txt /requirements.txt
 RUN pip3 install --upgrade pip && pip3 install -r /requirements.txt
 
 RUN rm /usr/bin/python && ln -s /usr/bin/python3 /usr/bin/python
+RUN ln -s /etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt
 
 ADD ml /ml
 
