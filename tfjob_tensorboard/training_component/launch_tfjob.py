@@ -61,6 +61,7 @@ tfjob = {
                     "replicas": n_workers,
                     "template": {
                         "spec": {
+                            "serviceAccountName": "default-editor",
                             "containers": [
                                 {
                                     "image": args.tfjob_image,
