@@ -163,7 +163,7 @@ def main():
     logging.info("exporting model....")
     tf.saved_model.save(model, '/tmp/exported_model')
     export_path = '{}/export/bikesw'.format(OUTPUT_DIR)
-    gsutil_cp = 'gsutil cp /tmp/exported_model ' + export_path
+    gsutil_cp = 'gsutil cp -r /tmp/exported_model ' + export_path
     os.system(gsutil_cp)
     logging.info("configmap: %s", args.config_map)
     logging.info('export path: %s', export_path)
@@ -189,9 +189,8 @@ def main():
     logging.info("again ... exporting model....")
     tf.saved_model.save(model, '/tmp/exported_model')
     export_path = '{}/export/bikesw'.format(OUTPUT_DIR)
-    gsutil_cp = 'gsutil cp /tmp/exported_model ' + export_path
+    gsutil_cp = 'gsutil cp -r /tmp/exported_model ' + export_path
     os.system(gsutil_cp)
-    
     
     cmap = {
         "apiVersion": "v1",
