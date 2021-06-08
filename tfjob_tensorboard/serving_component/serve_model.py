@@ -10,6 +10,7 @@ def get_parser():
 
     parser.add_argument('--model_name', type=str)
     parser.add_argument('--model_path', type=str)
+    parser.add_argument('--serving_image', type=str)
 
     return parser
 
@@ -19,6 +20,7 @@ def edit_template(src, dst, args, ns):
 
     template = template.replace('MODEL_NAME_TO_REPLACE', args.model_name)
     template = template.replace('STORAGE_TO_REPLACE', args.model_path)
+    template = template.replace('IMAGE_TO_REPLACE', args.serving_image)
     template = template.replace('NAMESPACE_TO_REPLACE', ns)
 
     with open(dst, 'w') as f:
