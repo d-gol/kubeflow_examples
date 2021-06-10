@@ -9,11 +9,11 @@ inputs:
     type: String
   - name: model_path
     type: GCSPath
-  - name: serving_image
+  - name: runtime_version
     type: String 
 implementation:
   container:
-    image: gitlab-registry.cern.ch/ai-ml/kubeflow_images/serving:9
+    image: gitlab-registry.cern.ch/ai-ml/kubeflow_images/serving:10
     command:
       - python3
       - /ml/serve_model.py
@@ -21,7 +21,7 @@ implementation:
       - inputValue: model_name
       - --model_path
       - inputValue: model_path
-      - --serving_image
-      - inputValue: serving_image
+      - --runtime_version
+      - inputValue: runtime_version
     env:
       KFP_POD_NAME: "{{pod.name}}"
