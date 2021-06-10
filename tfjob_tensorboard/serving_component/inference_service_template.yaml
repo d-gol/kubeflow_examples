@@ -7,5 +7,5 @@ spec:
   default:
     predictor:
       tensorflow:
-        image: IMAGE_TO_REPLACE
+        runtimeVersion: RUNTIME_VERSION_TO_REPLACE
         storageUri: STORAGE_TO_REPLACE
