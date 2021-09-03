@@ -1,0 +1,17 @@
+apiVersion: "serving.kubeflow.org/v1beta1"
+kind: "InferenceService"
+metadata:
+  name: "multi-model-sklearn-example"
+spec:
+  predictor:
+    minReplicas: 1  
+    sklearn:
+      name: "sklearn-mm-predict"
+      resources:
+        limits:
+          cpu: 100m
+          memory: 512Mi
+        requests:
+          cpu: 100m
+          memory: 512Mi
+        
