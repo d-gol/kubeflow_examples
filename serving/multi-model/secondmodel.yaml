@@ -1,0 +1,10 @@
+apiVersion: "serving.kubeflow.org/v1alpha1"
+kind: "TrainedModel"
+metadata:
+  name: "multimodel-second-example"
+spec:
+  inferenceService: "multi-model-sklearn-example"
+  model:
+    storageUri: "gs://kfserving-samples/models/sklearn/iris"
+    framework: "sklearn"
+    memory: "256Mi"
