@@ -14,9 +14,9 @@ To expand, feel free to add customized code with scripts to run.
 
 - Open a running NB server
 - Open Terminal
-- Login to kerberos with kinit:
-  - `kinit CERN-USER-ID`
-When kerberos has been refreshed, remove any old secret before creating a new one
+- Login to kerberos with kinit:   
+  - `kinit CERN-USER-ID`  
+- When kerberos has been refreshed, remove any old secret before creating a new one
   - `kubectl delete secret krb-secret`
 - Create a kerberos secret for Kubernetes
   - `kubectl create secret generic krb-secret --from-file=/tmp/krb5cc_1000`
