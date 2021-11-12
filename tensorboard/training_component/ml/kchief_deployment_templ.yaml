@@ -1,0 +1,66 @@
+---
+  apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: KTUNER_CHIEF
+      apptype: ktuner-chief
+    name: KTUNER_CHIEF
+    namespace: NAMESPACE
+  spec:
+    ports:
+    - name: grpc
+      port: 9000
+      targetPort: 9000
+    selector:
+      app: KTUNER_CHIEF
+    type: ClusterIP
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    app: KTUNER_CHIEF
+    apptype: ktuner-chief
+  name: KTUNER_CHIEF-dep
+  namespace: NAMESPACE
+spec:
+  # replicas: 1
+  template:
+    metadata:
+      labels:
+        app: KTUNER_CHIEF
+        apptype: ktuner-chief
+        version: v1
+    spec:
+      containers:
+      - args:
+        - --epochs=EPOCHS
+        - --tuner-dir=TUNER_DIR
+        - --tuner-proj=TUNER_PROJ
+        - --tuner-num=TUNER_NUM
+        - --max-trials=MAX_TRIALS
+        - --executions-per-trial=EXECS_PER_TRIAL
+        - --num-best-hps=NUM_BEST_HPS
+        - --respath=RES_PATH
+        - --bucket-name=BUCKET_NAME
+        image: gcr.io/google-samples/ml-pipeline-bikes-tuner
+        env:
+        - name: KERASTUNER_TUNER_ID
+          value: chief
+        - name: KERASTUNER_ORACLE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: KERASTUNER_ORACLE_PORT
+          value: "9000"
+        imagePullPolicy: Always
+        name: ktuner-chief
+        ports:
+        - name: tuner-port
+          containerPort: 9000
+        resources:
+          limits:
+            cpu: 1
+            memory: 2Gi
+      restartPolicy: Never
