@@ -1,2 +1,0 @@
-tensorflow.io
-tensorflow_datasets
