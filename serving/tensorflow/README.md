@@ -16,5 +16,5 @@
 - AUTH_SESSION is the authentication session cookie obtained in the previous step
 - NAMESPACE is a personal Kubeflow namespace, which can be seen in the top left corner of the UI
 
-```curl -H 'Cookie: authservice_session=AUTH_SESSION' -H 'Host: flowers-sample-predictor-default.NAMESPACE.example.com' http://ml.cern.ch/v1/models/flowers-sample:predict -d @./input.json```
+```curl -H @cookie -H 'Host: flowers-sample-predictor-default.NAMESPACE.example.com' http://ml.cern.ch/v1/models/flowers-sample:predict -d @./input.json```
 
