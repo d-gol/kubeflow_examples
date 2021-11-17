@@ -8,9 +8,6 @@ spec:
   - name: eos
     hostPath:
       path: /var/eos
-  - name: s3-secret-vol
-    secret:
-      secretName: s3-secret
   - name: krb-secret-vol
     secret:
       secretName: krb-secret
@@ -24,12 +21,8 @@ spec:
           chmod 600 /tmp/krb5cc_1000;
           echo "EOS user directory files:";
           ls -l /eos/user/LETTER/USERID;
-          echo "S3 awsAccessKeyID:";
-          less /secret/s3-secret-vol/awsAccessKeyID;
       volumeMounts:
       - name: eos
         mountPath: /eos
-      - name: s3-secret-vol
-        mountPath: "/secret/s3-secret-vol"
       - name: krb-secret-vol
         mountPath: "/secret/krb-secret-vol"
