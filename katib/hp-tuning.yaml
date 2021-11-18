@@ -1,7 +1,7 @@
 apiVersion: kubeflow.org/v1alpha3
 kind: Experiment
 metadata:
-  namespace: daniel-holmberg # change to your own namespace
+  namespace: daniel-holmberg # change to your own namespace + remove this comment
   name: hp-tuning
 spec:
   parallelTrialCount: 1
