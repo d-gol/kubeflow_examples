@@ -4,7 +4,7 @@ metadata:
   namespace: daniel-holmberg # change to your own namespace
   name: hp-tuning
 spec:
-  parallelTrialCount: 2
+  parallelTrialCount: 1
   maxTrialCount: 6
   maxFailedTrialCount: 1
   objective:
@@ -90,3 +90,45 @@ spec:
                         {{.Name}} {{.Value}}
                         {{- end}}
                         {{- end}}
+          Worker:
+            replicas: 1
+            restartPolicy: OnFailure
+            template:
+              metadata:
+                annotations:
+                  sidecar.istio.io/inject: "false"
+              spec:
+                volumes:
+                  - name: eos
+                    hostPath:
+                      path: /var/eos
+                  - name: krb-secret-vol
+                    secret:
+                      secretName: krb-secret
+                containers:
+                  - name: pytorch
+                    resources: 
+                      limits:
+                        nvidia.com/gpu: 1
+                    volumeMounts:
+                      - name: eos
+                        mountPath: /eos
+                      - name: krb-secret-vol
+                        mountPath: /secret/krb-secret-vol
+                    image: registry.hub.docker.com/deinal/particlenet-torchjob:multinode-training
+                    command: [sh, -c]
+                    args:
+                      - cp /secret/krb-secret-vol/krb5cc_1000 /tmp/krb5cc_1000;
+                        chmod 600 /tmp/krb5cc_1000;
+                        cp /eos/user/d/dholmber/weaver/weaver-benchmark/networks/top/pfn_pf.py .;
+                        python train.py
+                        --data-train "/eos/user/d/dholmber/weaver/top-dataset/converted/val_file_0.awkd"
+                        --data-test "/eos/user/d/dholmber/weaver/top-dataset/converted/test_file_0.awkd"
+                        --data-config "/eos/user/d/dholmber/weaver/weaver-benchmark/data/top/pf_features_mask.yaml"
+                        --network-config "pfn_pf.py"
+                        --model-prefix "outputs/{auto}/net"
+                        --predict-output "pred.root"
+                        --num-workers "1" --fetch-step "1" --data-fraction "1"
+                        --batch-size "128" --num-epochs "1" --start-lr "5e-3"
+                        --optimizer "ranger" --log "logs/{auto}.log"
+                        --gpus "0" --backend "nccl"   
