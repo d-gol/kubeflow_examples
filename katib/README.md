@@ -1,14 +1,12 @@
 ## Example - Katib
 
-### What is it about?
-Since the integration to Katib from Notebooks using KALE is currently unavailable, use default Katib examples.
+Run HP tuning for weaver. The job is based on a [gist for jet tagging with Particle Flow Network](https://gist.github.com/hqucms/3a9d9e9b53bf21253831108e8dbf8889).
 
 ### How to run?
-- Navigate to https://ml.cern.ch/_/katib/?ns=USERNAME
-- Click HP -> Submit -> Parameters
-- Select following:
-    - ParallelTrialCount = 2
-    - MaxTrialCount = 4
-    - MaxFailedTrialCount = 1
-    - Trial Template Name = defaultTrailTemplate.yaml
-- Click Deploy
+- Navigate to https://ml.cern.ch/_/katib/$/katib/hp
+- Paste the `hp-tuning.yaml` job file in the box and deploy 
+- The progress can be seen in the UI on https://ml.cern.ch/_/katib/#/katib/hp_monitor
+
+### Documentation
+- https://ml.docs.cern.ch/katib
+- https://www.kubeflow.org/docs/components/katib
