@@ -17,7 +17,7 @@ Run HP tuning for weaver. The job is based on a [gist for jet tagging with Parti
 
 ### How to run?
 - Navigate to https://ml.cern.ch/_/katib/$/katib/hp
-- Paste the `hp-tuning.yaml` job file in the box and deploy 
+- Paste the contents of `hp-tuning.yaml` job file in the box and deploy 
 - The progress can be seen in the UI on https://ml.cern.ch/_/katib/#/katib/hp_monitor
 
 ### Documentation
