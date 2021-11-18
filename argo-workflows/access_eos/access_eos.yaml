@@ -20,7 +20,7 @@ spec:
         - cp /secret/krb-secret-vol/krb5cc_1000 /tmp/krb5cc_1000;
           chmod 600 /tmp/krb5cc_1000;
           echo "EOS user directory files:";
-          ls -l /eos/user/LETTER/USERID;
+          ls -l /eos/user/d/dgolubov;
       volumeMounts:
       - name: eos
         mountPath: /eos
