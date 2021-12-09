@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: s3pipeline-
+spec:
+  entrypoint: show-s3-secret-dir
+  volumes:
+  - name: s3-secret-vol
+    secret:
+      secretName: s3-secret
+  templates:
+  - name: show-s3-secret-dir
+    container:
+      image: gitlab-registry.cern.ch/ai-ml/kubeflow_images/tensorflow-notebook-gpu-2.1.0:v0.6.1-30
+      command: [sh, -c]
+      args:
+        - echo "ls /secret/s3-secret-vol";
+          ls /secret/s3-secret-vol;
+      volumeMounts:
+      - name: s3-secret-vol
+        mountPath: "/secret/s3-secret-vol"
+
