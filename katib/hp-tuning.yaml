@@ -59,6 +59,10 @@ spec:
                   - name: krb-secret-vol
                     secret:
                       secretName: krb-secret
+                  - name: nvidia-driver
+                    hostPath:
+                      path: /opt/nvidia-driver
+                      type: ""
                 containers:
                   - name: pytorch
                     resources: 
@@ -69,6 +73,8 @@ spec:
                         mountPath: /eos
                       - name: krb-secret-vol
                         mountPath: /secret/krb-secret-vol
+                      - name: nvidia-driver
+                        mountPath: /opt/nvidia-driver
                     image: gitlab-registry.cern.ch/dholmber/particlenet-images/torchjob:latest
                     command: [sh, -c]
                     args:
@@ -105,6 +111,10 @@ spec:
                   - name: krb-secret-vol
                     secret:
                       secretName: krb-secret
+                  - name: nvidia-driver
+                    hostPath:
+                      path: /opt/nvidia-driver
+                      type: ""
                 containers:
                   - name: pytorch
                     resources: 
@@ -115,6 +125,8 @@ spec:
                         mountPath: /eos
                       - name: krb-secret-vol
                         mountPath: /secret/krb-secret-vol
+                      - name: nvidia-driver
+                        mountPath: /opt/nvidia-driver
                     image: registry.hub.docker.com/deinal/particlenet-torchjob:multinode-training
                     command: [sh, -c]
                     args:
